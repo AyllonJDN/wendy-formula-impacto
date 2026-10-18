@@ -10,8 +10,6 @@ export const BRAND = {
   intro:
     "La plantilla para presentar tu empresa a clientes, socios o inversionistas con credibilidad, datos y emoción. En 20 minutos.",
   byline: "Por Wendy Wunder · Empresaria, productora de eventos y speaker · 20 minutos",
-  handle: "@WendyWunderOficial",
-  emails: ["jona@wwin.pe", "isabel@wwin.pe"],
 };
 
 export const STEP_ORDER: StepId[] = [
@@ -25,7 +23,6 @@ export const STEP_ORDER: StepId[] = [
   "verbal",
   "noVerbal",
   "paraverbal",
-  "contact",
   "reveal",
   "diagnosis",
 ];
@@ -41,9 +38,8 @@ export const STEP_LABEL: Record<StepId, string> = {
   verbal: "06 · CHECKLIST ANTES DE PRESENTAR",
   noVerbal: "06 · CHECKLIST ANTES DE PRESENTAR",
   paraverbal: "06 · CHECKLIST ANTES DE PRESENTAR",
-  contact: "07 · DATOS DE CONTACTO",
-  reveal: "08 · REVELACIÓN",
-  diagnosis: "09 · DIAGNÓSTICO",
+  reveal: "07 · REVELACIÓN",
+  diagnosis: "08 · DIAGNÓSTICO",
 };
 
 export const COVER = {
@@ -205,17 +201,6 @@ export const CHECKLIST: {
     ],
   },
 ];
-
-export const CONTACT = {
-  title: "TUS DATOS",
-  text: "Completa tus datos para personalizar tu diagnóstico y tu documento.",
-  fields: [
-    { key: "nombre", label: "Nombre y apellido", type: "text", autoComplete: "name" },
-    { key: "email", label: "Correo electrónico", type: "email", autoComplete: "email" },
-    { key: "whatsapp", label: "WhatsApp", type: "tel", autoComplete: "tel" },
-    { key: "empresa", label: "Empresa / negocio", type: "text", autoComplete: "organization" },
-  ] as const,
-};
 
 export const REVEAL = {
   title: "TUS RESPUESTAS YA MUESTRAN CÓMO ESTÁ CONSTRUIDO TU PITCH.",

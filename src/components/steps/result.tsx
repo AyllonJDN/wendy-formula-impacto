@@ -10,7 +10,7 @@ export function Reveal({ onGo, onBack }: { onGo: () => void; onBack: () => void 
   const [leaving, setLeaving] = useState(false);
   return (
     <div className={`reveal enter${leaving ? " leaving" : ""}`}>
-      <span className="badge" aria-hidden="true">08</span>
+      <span className="badge" aria-hidden="true">07</span>
       <h1 className="display h1" style={{ lineHeight: 1.02 }}>{REVEAL.title}</h1>
       <p className="lead muted" style={{ maxWidth: "46ch" }}>{REVEAL.text}</p>
       <div className="dx-actions">
@@ -64,7 +64,7 @@ export function Diagnosis({
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = pdfFileName(answers.contact.nombre);
+      a.download = pdfFileName();
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -82,9 +82,8 @@ export function Diagnosis({
     <article className="enter">
       <header className="dx-head">
         <div className="stack-sm" style={{ gap: 16 }}>
-          <div className="section-tag"><Badge>09</Badge><span className="eyebrow">{T.eyebrow}</span></div>
-          <h1 className="dx-name">{answers.contact.nombre}</h1>
-          <p className="eyebrow" style={{ color: "var(--ww-black)" }}>{BRAND.tool}</p>
+          <div className="section-tag"><Badge>08</Badge><span className="eyebrow">{T.eyebrow}</span></div>
+          <h1 className="dx-name">{BRAND.tool}</h1>
         </div>
         <p className="formula-big grad-text" aria-label="( C + D ) × E">( C + D ) × E</p>
       </header>
@@ -186,10 +185,6 @@ export function Diagnosis({
           <div className="stack-sm">
             <h2 className="dx-title">{CLOSING.aboutTitle}</h2>
             <p>{CLOSING.about}</p>
-          </div>
-          <div className="stack-sm contact-line">
-            <p>{BRAND.handle}</p>
-            {BRAND.emails.map((e) => <p key={e}>{e}</p>)}
           </div>
         </div>
       </section>

@@ -15,7 +15,6 @@ export function emptyAnswers(): Answers {
       noVerbal: [null, null, null, null],
       paraverbal: [null, null, null, null],
     },
-    contact: { nombre: "", email: "", whatsapp: "", empresa: "" },
   };
 }
 
@@ -47,12 +46,6 @@ export function mergeAnswers(raw: unknown): Answers {
       verbal: yn(r.checklist?.verbal),
       noVerbal: yn(r.checklist?.noVerbal),
       paraverbal: yn(r.checklist?.paraverbal),
-    },
-    contact: {
-      nombre: str(r.contact?.nombre),
-      email: str(r.contact?.email),
-      whatsapp: str(r.contact?.whatsapp),
-      empresa: str(r.contact?.empresa),
     },
   };
 }

@@ -13,14 +13,6 @@ export function mixTotal(mix: Answers["mix"]): number {
   return [mix.ethos, mix.logos, mix.pathos].reduce((s, v) => s + (parsePercent(v) ?? 0), 0);
 }
 
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-export function isValidPhone(v: string): boolean {
-  if (!/^\+?[\d\s\-()]+$/.test(v.trim())) return false;
-  const digits = v.replace(/\D/g, "").length;
-  return digits >= 7 && digits <= 15;
-}
-
 function required(errors: Errors, key: string, value: string) {
   if (blank(value)) errors[key] = UI.required;
 }
@@ -69,15 +61,6 @@ export function validateStep(step: StepId, a: Answers): Errors {
       if (Object.keys(e).length) e.checklistSummary = UI.pick;
       break;
     }
-    case "contact": {
-      required(e, "contact.nombre", a.contact.nombre);
-      required(e, "contact.empresa", a.contact.empresa);
-      if (blank(a.contact.email)) e["contact.email"] = UI.required;
-      else if (!EMAIL.test(a.contact.email.trim())) e["contact.email"] = UI.emailInvalid;
-      if (blank(a.contact.whatsapp)) e["contact.whatsapp"] = UI.required;
-      else if (!isValidPhone(a.contact.whatsapp)) e["contact.whatsapp"] = UI.phoneInvalid;
-      break;
-    }
     default:
       break;
   }
@@ -93,7 +76,6 @@ const INPUT_STEPS: StepId[] = [
   "verbal",
   "noVerbal",
   "paraverbal",
-  "contact",
 ];
 
 /** Primer paso con respuestas pendientes, o null si todo está completo. */

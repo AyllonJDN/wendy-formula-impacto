@@ -13,7 +13,6 @@ export interface Answers {
   pathos: string[]; // 4
   atributo: { vendes: string; mayoria: string; conectando: string };
   checklist: Record<ChecklistKey, YesNo[]>; // 4 cada uno
-  contact: { nombre: string; email: string; whatsapp: string; empresa: string };
 }
 
 export type Errors = Record<string, string>;
@@ -29,7 +28,6 @@ export type StepId =
   | "verbal"
   | "noVerbal"
   | "paraverbal"
-  | "contact"
   | "reveal"
   | "diagnosis";
 

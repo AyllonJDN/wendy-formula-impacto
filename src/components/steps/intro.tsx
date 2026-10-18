@@ -9,8 +9,8 @@ export function Cover({ onStart }: { onStart: () => void }) {
   return (
     <div className="stack enter" style={{ gap: 44 }}>
       <div className="cover-grid">
-        <div className="stack-sm" style={{ gap: 22 }}>
-          <p className="eyebrow">{COVER.eyebrow}</p>
+        <div className="stack-sm cover-copy" style={{ gap: 22 }}>
+          <p className="eyebrow eyebrow-pill">{COVER.eyebrow}</p>
           <p className="lead" style={{ fontWeight: 700 }}>{COVER.lead}</p>
           <h1 className="display cover-title">
             {COVER.title[0]}
@@ -19,15 +19,19 @@ export function Cover({ onStart }: { onStart: () => void }) {
           </h1>
           <p className="lead" style={{ fontWeight: 800 }}>{BRAND.descriptor}</p>
           <p className="muted">{BRAND.byline}</p>
-        </div>
-        <div className="stack-sm" style={{ gap: 22 }}>
-          <p className="muted" style={{ maxWidth: "40ch" }}>{BRAND.intro}</p>
+          <p className="muted" style={{ maxWidth: "44ch" }}>{BRAND.intro}</p>
           <div>
-            <button type="button" className="btn btn-primary btn-grow" onClick={onStart} style={{ width: "100%" }}>
+            <button type="button" className="btn btn-primary btn-grow" onClick={onStart}>
               {COVER.cta} →
             </button>
           </div>
         </div>
+        <figure className="hero-photo">
+          <span className="hero-blob" aria-hidden="true" />
+          <span className="hero-dots" aria-hidden="true" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/wendy.png" alt="Wendy Wunder" width={1428} height={1932} fetchPriority="high" />
+        </figure>
       </div>
 
       <div className="formula-band" role="group" aria-label="( C + D ) × E">

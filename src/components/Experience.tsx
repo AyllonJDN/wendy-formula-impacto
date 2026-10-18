@@ -6,7 +6,7 @@ import { emptyAnswers } from "@/lib/answers";
 import { clearSaved, loadSaved, save } from "@/lib/storage";
 import { firstInvalidStep, validateStep } from "@/lib/validation";
 import type { Answers, StepId } from "@/types";
-import { Attribute, Checklist, Contact, PitchA, PitchB, Pathos } from "./steps/inputs";
+import { Attribute, Checklist, PitchA, PitchB, Pathos } from "./steps/inputs";
 import { Cover, Formula, Layers } from "./steps/intro";
 import { Diagnosis, Reveal } from "./steps/result";
 
@@ -74,11 +74,6 @@ export function Experience() {
       }, 0);
       return;
     }
-    if (editing && step === "contact") {
-      setEditing(false);
-      goTo("diagnosis");
-      return;
-    }
     goTo(STEP_ORDER[Math.min(idxOf(step) + 1, LAST)]);
   }
 
@@ -121,7 +116,6 @@ export function Experience() {
     case "verbal": body = <Checklist {...common} group="verbal" index={0} />; break;
     case "noVerbal": body = <Checklist {...common} group="noVerbal" index={1} />; break;
     case "paraverbal": body = <Checklist {...common} group="paraverbal" index={2} />; break;
-    case "contact": body = <Contact {...common} />; break;
     case "reveal": body = <Reveal onGo={() => goTo("diagnosis")} onBack={back} />; break;
     case "diagnosis":
       body = <Diagnosis answers={answers} onEdit={(s) => { setEditing(true); goTo(s); }} />;
@@ -152,7 +146,7 @@ export function Experience() {
         <nav className="nav" aria-label="Navegación">
           <div className="nav-inner">
             <button type="button" className="btn btn-ghost" onClick={back}>{UI.back}</button>
-            <span className="nav-count">{i} / {LAST - 3}</span>
+            <span className="nav-count">{i} / {LAST - 2}</span>
             {editing && (
               <button type="button" className="link-btn" onClick={backToDiagnosis}>{UI.backToDiagnosis}</button>
             )}

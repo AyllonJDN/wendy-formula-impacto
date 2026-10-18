@@ -18,7 +18,7 @@ const C = {
 const s = StyleSheet.create({
   page: { paddingTop: 56, paddingBottom: 64, paddingHorizontal: 52, fontFamily: "Helvetica", color: C.black, fontSize: 10.5, lineHeight: 1.45 },
   eyebrow: { fontFamily: "Helvetica-Bold", fontSize: 8.5, letterSpacing: 1.6, color: C.gray, marginBottom: 6 },
-  h1: { fontFamily: "Helvetica-Bold", fontSize: 30, lineHeight: 1.05, marginBottom: 18 },
+  h1: { fontFamily: "Helvetica-Bold", fontSize: 30, lineHeight: 1.05, marginBottom: 18, color: C.magenta },
   h2: { fontFamily: "Helvetica-Bold", fontSize: 13, marginBottom: 4 },
   rule: { borderTopWidth: 0.7, borderTopColor: C.line, marginVertical: 14 },
   label: { fontFamily: "Helvetica-Bold", fontSize: 8, letterSpacing: 1.4, color: C.magenta, marginBottom: 3 },
@@ -42,10 +42,19 @@ function Gradient({ id }: { id: string }) {
 
 function Footer() {
   return (
+    <>
+      <View fixed style={{ position: "absolute", top: 0, left: 0, right: 0 }}>
+        <Svg width={595} height={8}>
+          <Gradient id="topbar" />
+          <Rect x={0} y={0} width={595} height={8} fill="url(#topbar)" />
+        </Svg>
+      </View>
     <View style={s.footer} fixed>
+
       <Text>{BRAND.name} · {BRAND.tool}</Text>
       <Text render={({ pageNumber }) => String(pageNumber).padStart(2, "0")} />
     </View>
+    </>
   );
 }
 
@@ -107,7 +116,6 @@ export interface PdfProps {
 }
 
 export function DiagnosisPdf({ answers, diagnosis, date }: PdfProps) {
-  const { contact } = answers;
   const T = DIAGNOSIS_TEXT;
   return (
     <Document title={`${BRAND.tool} · Diagnóstico personal`} author={BRAND.name} subject={BRAND.descriptor}>
@@ -131,10 +139,6 @@ export function DiagnosisPdf({ answers, diagnosis, date }: PdfProps) {
           </View>
           <Text style={[s.eyebrow, { marginTop: 22, fontSize: 10 }]}>DIAGNÓSTICO PERSONAL</Text>
           <View style={{ marginTop: 22 }}>
-            <Text style={s.label}>NOMBRE</Text>
-            <Text style={{ fontFamily: "Helvetica-Bold", fontSize: 15, marginBottom: 10 }}>{contact.nombre}</Text>
-            <Text style={s.label}>EMPRESA</Text>
-            <Text style={{ fontFamily: "Helvetica-Bold", fontSize: 15, marginBottom: 10 }}>{contact.empresa}</Text>
             <Text style={s.label}>FECHA</Text>
             <Text style={{ fontFamily: "Helvetica-Bold", fontSize: 15 }}>{date}</Text>
           </View>
@@ -242,7 +246,6 @@ export function DiagnosisPdf({ answers, diagnosis, date }: PdfProps) {
         <Text style={{ fontFamily: "Helvetica-BoldOblique", fontSize: 18, lineHeight: 1.25 }}>{CLOSING.phrase}</Text>
         <View style={{ marginTop: 40 }}>
           <Text style={{ fontFamily: "Helvetica-Bold", fontSize: 12, letterSpacing: 3 }}>{BRAND.name}</Text>
-          <Text style={{ color: C.magenta, fontFamily: "Helvetica-Bold", marginTop: 4 }}>{BRAND.handle}</Text>
         </View>
         <Footer />
       </Page>

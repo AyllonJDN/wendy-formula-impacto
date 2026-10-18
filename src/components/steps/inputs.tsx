@@ -1,6 +1,6 @@
 "use client";
 
-import { ATTRIBUTE, CHECKLIST, CHECKLIST_INTRO, CONTACT, PATHOS, PITCH } from "@/data/content";
+import { ATTRIBUTE, CHECKLIST, CHECKLIST_INTRO, PATHOS, PITCH } from "@/data/content";
 import type { Answers, ChecklistKey } from "@/types";
 import { SectionTag, TextField, YesNoItem, type FieldCtx } from "../ui";
 
@@ -207,27 +207,6 @@ export function Checklist({
           <p className="lead" style={{ marginTop: 12, fontWeight: 600 }}>{CHECKLIST_INTRO.closeText}</p>
         </div>
       )}
-    </div>
-  );
-}
-
-export function Contact({ answers, update, err, touch }: P) {
-  return (
-    <div className="split enter">
-      <div className="split-head stack-sm">
-        <SectionTag n="07" label="DATOS DE CONTACTO" />
-        <h1 className="h1">{CONTACT.title}</h1>
-        <p className="lead">{CONTACT.text}</p>
-      </div>
-      <div className="stack">
-        {CONTACT.fields.map((f) => (
-          <TextField key={f.key} name={`contact.${f.key}`} label={f.label} type={f.type} autoComplete={f.autoComplete}
-            inputMode={f.key === "whatsapp" ? "tel" : f.key === "email" ? "email" : "text"}
-            value={answers.contact[f.key]}
-            onChange={(v) => update((a) => ({ ...a, contact: { ...a.contact, [f.key]: v } }))}
-            err={err} touch={touch} />
-        ))}
-      </div>
     </div>
   );
 }
