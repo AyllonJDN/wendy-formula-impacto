@@ -27,8 +27,6 @@ export function Cover({ onStart }: { onStart: () => void }) {
           </div>
         </div>
         <figure className="hero-photo">
-          <span className="hero-blob" aria-hidden="true" />
-          <span className="hero-dots" aria-hidden="true" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/wendy.png" alt="Wendy Wunder" width={1428} height={1932} fetchPriority="high" />
         </figure>
