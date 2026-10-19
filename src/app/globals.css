@@ -388,12 +388,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
   border-radius: 999px 999px 0 0;
   background: var(--ww-gradient);
 }
-.hero-photo::before { /* puntos amarillos de marca, detrás de ella */
-  content: ""; position: absolute; right: 6%; top: 10%; width: 30%; aspect-ratio: 1; z-index: 0;
-  background: radial-gradient(var(--ww-yellow) 28%, transparent 30%) 0 0 / 14px 14px;
-}
 .hero-photo img {
-  position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
-  height: 100%; width: auto; max-width: none; z-index: 1; display: block;
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+  object-fit: cover; object-position: 50% 12%;
+}
+.hero-photo::after { /* filo de color de marca en la base del arco */
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 8px; background: var(--ww-gradient); z-index: 2;
 }
 @media (min-width: 900px) { .cover-title { font-size: clamp(3rem, 6.2vw, 6.5rem); } }
