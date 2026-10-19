@@ -393,3 +393,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .hero-photo { max-width: 720px; }
 @media (min-width: 900px) { .cover-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 24px; } .cover-title { font-size: clamp(3rem, 6.2vw, 6.5rem); } }
 @media (min-width: 900px) { .hero-photo img { transform: scale(1.14); transform-origin: 50% 100%; } .hero-photo { margin-top: 40px; } }
+
+/* Difuminado: las piernas se funden con la página y la banda aparece suave */
+.hero-photo img { -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 96%); mask-image: linear-gradient(to bottom, #000 62%, transparent 96%); filter: none; }
+.hero-blob { -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); }
+.formula-band { margin-top: -24px; padding-top: 72px; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 64px); mask-image: linear-gradient(to bottom, transparent 0, #000 64px); }
